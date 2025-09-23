@@ -1,0 +1,188 @@
+.sidebar-container{
+    color: white;
+    height: 100%;
+    max-width: 330px;
+    max-height: calc(100vh - 45px);
+    width: 100%;
+    padding: 15px 10px;
+    margin-right: auto;
+    overflow-y:auto;
+    transition: all .3s ease-in-out , opacity .5s .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out , opacity .5s .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out , opacity .5s .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out , opacity .5s .3s ease-in-out;
+    -o-transition: all .3s ease-in-out , opacity .5s .3s ease-in-out;
+}
+@media (max-width: 1000px) {
+    .sidebar-container{
+        max-width: 250px;
+    }  
+}
+@media (max-width: 768px) {
+    .sidebar-container{
+        position: absolute;
+        z-index: 1000;
+        max-width:300px;
+        max-height: calc(100vh - 70px);
+        top: -100%;
+        opacity: 0;
+    }  
+}
+.sidebar-container.open{
+    top: 7px;
+    opacity: 1;
+    backdrop-filter: blur(1px);
+    background: #171717e8;
+}
+
+.sidebar-container::-webkit-scrollbar {
+    width: 2px;
+    display: block;
+    background-color: transparent;
+}
+.sidebar-container::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    -ms-border-radius:10px;
+    -o-border-radius:10px;
+}
+.sidebar-container .user-info{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 0;
+    direction: ltr;
+    margin-bottom: 20px;
+}
+.sidebar-container .user-info .user-avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    object-fit: cover;
+    background-color: #1976D2;
+    color: #ffffff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+
+
+.sidebar-container .user-info article p{
+    font-size: .8rem;
+}
+@media (max-width: 1000px) {
+    .sidebar-container .user-info article p{
+        font-size: 11px ;
+    }
+}
+.sidebar-container .user-info article h5,
+.sidebar-container .user-info article p{
+    max-width: 190px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+@media (max-width: 768px) {
+    .sidebar-container .user-info article h5,
+    .sidebar-container .user-info article p{
+        max-width: 130px;
+    }
+}
+.sidebar-container .user-actions{
+    border-bottom: 1px solid #333;
+    margin-bottom: 10px;
+}
+.sidebar-container ul{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    list-style: none;
+}
+.sidebar-container ul li a{
+    padding: 8px 10px;
+    position: relative;
+    font-size: .9rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.sidebar-container ul li a span{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+}
+.sidebar-container ul li a .list-length{
+    height: 23px;
+    width: 23px;
+    border-radius: 50%;
+    position: absolute;
+    font-size: 12px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    background-color: #51a8ff;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px #005fbe;
+}
+
+.sidebar-container ul li a:focus,
+.sidebar-container ul li a:hover{
+    background-color: #333;
+    outline: none;
+}
+
+
+
+.sidebar-container footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #333;
+    position: absolute;
+    bottom: -1px;
+    right: 0;
+    padding-right: 10px;
+    width: 320px;
+    backdrop-filter: blur(10px);
+    padding-block: 2px;
+}
+@media (max-width: 1000px) {
+    .sidebar-container footer{
+        max-width: 100%;
+        padding-right: 0;
+        bottom: -16px;
+        position: sticky;
+    }  
+}
+.sidebar-container footer button{
+    display: flex;
+    gap: 15px;
+    color: #50a7ff;
+    font-size: .9rem;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+.sidebar-container footer button:focus,
+.sidebar-container footer button:hover{
+    color: white;
+}

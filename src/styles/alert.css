@@ -1,0 +1,21 @@
+
+.alert{
+    position: absolute;
+    display: flex;
+    gap: 9px;
+    align-items: center;
+    top: 25%;
+    right: 5px;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 9999;
+    transition: 400ms ease-in-out;
+    -webkit-transition: 400ms ease-in-out;
+    -moz-transition: 400ms ease-in-out;
+    -ms-transition: 400ms ease-in-out;
+    -o-transition: 400ms ease-in-out;
+}
+.alert.show {
+    top: 30%;
+    opacity: 1;
+}
