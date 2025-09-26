@@ -1,5 +1,5 @@
 // contexts/TodoContext.js
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useMemo } from 'react';
 
 const TodoContext = createContext();
 
@@ -12,13 +12,13 @@ export const useTodo = () => {
 };
 
 const getDefaultSections = () => ({
-  myDay: { name: 'يومي', type: 'default', backGround: "url('/images/tv-tower.jpg')" },
-  important: { name: 'مهم', type: 'default', backGround: '#0e0e0e' },
-  planned: { name: 'مخطط', type: 'default', backGround: '#0e0e0e' },
-  assignedToMe: { name: 'تم تكليفي به', type: 'default', backGround: '#0e0e0e' },
-  flaggedEmail: { name: 'البريد المميز', type: 'default', backGround: '#0e0e0e' },
-  tasks: { name: 'المهام', type: 'default', backGround: '#0e0e0e' },
-  custom_1757937742150: { name: 'قائمه غير معرفه', type: 'custom', backGround: '#0e0e0e' },
+  myDay: { name: 'يومي', type: 'default', backGround: "url('/images/tv-tower.jpg')", },
+  important: { name: 'مهم', type: 'default', backGround: '#0e0e0e', sort:false },
+  planned: { name: 'مخطط', type: 'default', backGround: '#0e0e0e', },
+  assignedToMe: { name: 'تم تكليفي به', type: 'default', backGround: '#0e0e0e', },
+  flaggedEmail: { name: 'البريد المميز', type: 'default', backGround: '#0e0e0e', },
+  tasks: { name: 'المهام', type: 'default', backGround: '#0e0e0e', },
+  custom_1757937742150: { name: 'قائمه غير معرفه', type: 'custom', backGround: '#0e0e0e', },
 });
 
 export const TodoProvider = ({ children }) => {
@@ -60,6 +60,7 @@ export const TodoProvider = ({ children }) => {
     }
   }, [tasks]);
 
+
   // إضافة قسم جديد
   const addSection = () => {
     const section = `custom_${Date.now()}`;
@@ -71,12 +72,6 @@ export const TodoProvider = ({ children }) => {
         backGround:'#0e0e0e'
       }
     }));
-    
-    // إنشاء مصفوفة مهام فارغة للقسم الجديد
-    // setTasks(prev => ({
-    //   ...prev,
-    //   [section]: []
-    // }));
     
     return section;
   };
@@ -128,7 +123,7 @@ export const TodoProvider = ({ children }) => {
     // const navigate = useNavigate();
   const removeSection = (section) => {
     if (sections[section]?.type === 'custom') {
-
+      
       setSections(prev => {
         const { [section]: removed, ...rest } = prev;
         return rest;
@@ -140,6 +135,16 @@ export const TodoProvider = ({ children }) => {
   }
   };
   const ChangeOrderTasks = (section) => {
+    if(section === 'important'){
+      setSections(prev => ({
+        ...prev,
+        important:{
+          ...prev,
+          sort:!prev.important.sort
+        }
+      }))
+      return ;
+    }
     if( tasks[section] !== undefined &&  tasks[section].length > 1) {
       setTasks(prev => ({
         ...prev,
@@ -148,18 +153,39 @@ export const TodoProvider = ({ children }) => {
     }
   } 
 
-  const addTask = (section, task) => {
-    setTasks(prev => ({
+const importantTasks = useMemo(() => {
+  const res = [];
+  for (const [sectionKey, arr] of Object.entries(tasks || {})) {
+    if (!Array.isArray(arr)) continue;
+    arr.forEach(t => {
+      if (t && t.important) {
+        res.push({ ...t, section: sectionKey });
+      }
+    });
+  }
+
+  return sections.important?.sort ? res.reverse() : res;
+}, [tasks, sections]);
+
+const addTask = (section, task) => {
+  setTasks(prev => {
+    const targetSection = section === 'important' ? 'tasks' : section;
+
+    return {
       ...prev,
-      [section === 'important' ? 'tasks' : section]: [{ 
-        id: Date.now(), 
-        title: task, 
-        completed: false,
-        important: section === 'important' ? true : false,
-      }, 
-        ...(prev[section] || [])] 
-    }));
-  };
+      [targetSection]: [
+        {
+          id: Date.now(),
+          title: task,
+          completed: false,
+          important: section === 'important' ? true : false,
+        },
+        ...(prev[targetSection] || []) // هنا بقى نجيب المهمات القديمة من المكان الصح
+      ]
+    };
+  });
+};
+
 
   const removeTask = (section, taskId) => {
     setTasks(prev => ({
@@ -176,6 +202,15 @@ export const TodoProvider = ({ children }) => {
     }));
   };
 
+  const taskImportant = (section, taskId) => {
+    setTasks(prev => ({
+      ...prev,
+      [section]: prev[section]?.map(task =>
+        task.id === taskId ? { ...task, important: !task.important } : task
+      ) || []
+    }));
+  };
+  
   return (
     <TodoContext.Provider value={{
       sections,
@@ -189,6 +224,8 @@ export const TodoProvider = ({ children }) => {
       addTask,
       removeTask,
       taskCompleted,
+      taskImportant,
+      importantTasks,
     }}>
       {children}
     </TodoContext.Provider>

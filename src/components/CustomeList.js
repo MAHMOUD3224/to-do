@@ -6,7 +6,7 @@ import PageNotFound from "./pageNotFound";
 
 export default function CustomList() {
   let { sectionId } = useParams();
-  const { sections, tasks, taskCompleted, addTask, removeTask } = useTodo();
+  const { sections, tasks, taskCompleted, taskImportant} = useTodo();
 
   // تحقق لو القسم مش موجود
   if (!sections[sectionId]) {
@@ -54,10 +54,8 @@ export default function CustomList() {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
   // جلب اسم القسم لاستخدامه في الـ title
-  const sectionName = sections[sectionId]?.name || 'قائمة غير معرفه'; // افتراضي لو مفيش اسم
 
   return (
-
       <ul className="task-list">
         {tasks[sectionId].map((task) => (
           <li
@@ -82,7 +80,7 @@ export default function CustomList() {
                 ))}
               </p>
             </div>
-            <span style={{ display: "grid" }}>
+            <span style={{ display: "grid" }} onClick={() => taskImportant(sectionId, task.id)}>
               <StarBorderPurple500OutlinedIcon
                 style={{ color: task.important ? "deeppink" : 'lightgray', cursor: "pointer" }}
               />

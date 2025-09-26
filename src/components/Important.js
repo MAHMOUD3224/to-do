@@ -1,14 +1,22 @@
 // Important
 import Checkbox from "@mui/material/Checkbox";
 import { useTodo } from "../contexts/TodoContext";
-import StarBorderPurple500OutlinedIcon from "@mui/icons-material/StarBorderPurple500Outlined";
+import StarIcon from '@mui/icons-material/Star';
+import { useState } from "react";
+import TaskContextMenu from "./RightClick";
 
 export default function Important() {
-  const { tasks, taskCompleted } = useTodo();
-  let section = 'important';
-
-  // إضافة Helmet لتحديد الـ title ديناميكيًا
-  if (!tasks[section]) {
+  const { taskCompleted,taskImportant, importantTasks, sections, removeTask } = useTodo();
+     const [menu, setMenu] = useState(null);
+      const [selectedTask, setSelectedTask] = useState(null);
+    
+      const handleContextMenu = (e, task) => {
+        e.preventDefault();
+        setSelectedTask(task);
+        setMenu({ mouseX: e.clientX, mouseY: e.clientY });
+      };
+  console.log(importantTasks)
+  if (importantTasks.length === 0) {
     return (
       <div
         style={{
@@ -31,11 +39,8 @@ export default function Important() {
       </div>
     );
   }
+  
 
-  const print = (e) => {
-    e.preventDefault();
-    console.log("s");
-  };
 
   const checkAsCompleted = (sectionName, taskId) => {
     console.log(sectionName, taskId);
@@ -43,39 +48,50 @@ export default function Important() {
   };
 
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
-
+  
   return (
-      <ul className="task-list">
-        {tasks[section].map((task) => (
+      <ul className="task-list" id="important-list">
+        {importantTasks.map((task) => (
           <li
             className={task.completed ? "completed" : ""}
-            onContextMenu={(e) => print(e)}
-            key={task.id}
-            id={`task-${task.id}`}
+                key={`${task.section}-${task.id}`}
+                id={`task-${task.section}-${task.id}`}
+              onContextMenu={(e) => handleContextMenu(e, task)}
           >
             <div className="task-item">
               <Checkbox
                 {...label}
                 style={{ color: "#1976D2" }}
                 checked={task.completed}
-                onChange={() => checkAsCompleted(section, task.id)}
+                name={task.id}
+                onChange={() => checkAsCompleted(task.section,  task.id)}
               />
               <p>
                 {task.title.match(/.{1,45}/g)?.map((chunk, index, arr) => (
                   <span key={index}>
                     {chunk}
                     {index < arr.length - 1 && <br />}
+                    <br/>
+                    <span style={{fontSize:'12px', }}>{sections[task.section].name}</span>
                   </span>
                 ))}
               </p>
             </div>
-            <span style={{ display: "grid" }}>
-              <StarBorderPurple500OutlinedIcon
+            <span style={{ display: "grid" }} onClick={() => taskImportant(task.section, task.id)}>
+              <StarIcon
                 style={{ color: task.important ? "deeppink" : 'lightgray', cursor: "pointer" }}
               />
             </span>
           </li>
         ))}
+                        <TaskContextMenu
+                        anchor={menu}
+                        task={selectedTask}
+                        onClose={() => { setMenu(null); setSelectedTask(null); }}
+                        onComplete={(t) => taskCompleted(t.section, t.id)}
+                        onImportant={(t) => taskImportant(t.section, t.id)}
+                        onDelete={(t) => removeTask(t.section, t.id)}
+                      />
       </ul>
   );
 }

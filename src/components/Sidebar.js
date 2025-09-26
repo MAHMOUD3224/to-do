@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import { useTodo } from '../contexts/TodoContext';
 
 export default function Sidebar() {
-  const {addSection, sections, tasks} = useTodo();
+  const {addSection, sections, importantTasks, tasks} = useTodo();
   const closeSidebar = () => {
   document.querySelector('.sidebar-container').classList.remove('open');
   document.getElementById('click-sound').play()
@@ -51,12 +51,14 @@ export default function Sidebar() {
           <Link to="/myDay">
             <LightModeOutlinedIcon style={{color:'lightgray'}} />
             <span>يومي</span>
+            {!tasks['myDay'] ? '' : <span className='list-length'>{tasks['myDay'].length}</span>}
           </Link>
         </li>
         <li onClick={closeSidebar}>
           <Link to="/important">
             <StarBorderPurple500OutlinedIcon style={{color:'deeppink'}} />
             <span>مهم</span>
+            {importantTasks.length === 0 ? '' : <span className='list-length'>{importantTasks.length}</span>}
           </Link>
         </li>
         {/* <li onClick={closeSidebar}>
@@ -79,19 +81,14 @@ export default function Sidebar() {
         </li> */}
         <li onClick={closeSidebar}>
           <Link to="/tasks">
-            <HomeOutlinedIcon style={{color:'#0054ff'}}/>
+            <HomeOutlinedIcon style={{color:'skyblue'}}/>
             <span>المهام</span>
+            {!tasks['tasks'] ? '' : <span className='list-length'>{tasks['tasks'].length}</span>}
           </Link>
         </li>
       </ul>
       <ul className="new-list">
         {custom_Li}
-          {/* <li>
-          <Link to="/untitled">
-            <MenuOutlinedIcon />
-            <span>بدون عنوان</span>
-          </Link>
-        </li> */}
       </ul>
       <footer>
         <Button onClick={() => addSection()}>

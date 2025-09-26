@@ -1,11 +1,20 @@
 import Checkbox from "@mui/material/Checkbox";
 import { useTodo } from "../contexts/TodoContext";
 import StarBorderPurple500OutlinedIcon from "@mui/icons-material/StarBorderPurple500Outlined";
+import { useState } from "react";
+import TaskContextMenu from "./RightClick";
 
 export default function MyDay() {
-  const { tasks, taskCompleted } = useTodo();
+  const { tasks, taskCompleted,removeTask, taskImportant } = useTodo();
   let section = 'myDay';
+ const [menu, setMenu] = useState(null);
+  const [selectedTask, setSelectedTask] = useState(null);
 
+  const handleContextMenu = (e, task) => {
+    e.preventDefault();
+    setSelectedTask(task);
+    setMenu({ mouseX: e.clientX, mouseY: e.clientY });
+  };
   // إضافة Helmet لتحديد الـ title ديناميكيًا
   if (!tasks[section]) {
     return (
@@ -34,10 +43,6 @@ export default function MyDay() {
     );
   }
 
-  const print = (e) => {
-    e.preventDefault();
-    console.log("s");
-  };
 
   const checkAsCompleted = (sectionName, taskId) => {
     console.log(sectionName, taskId);
@@ -51,16 +56,16 @@ export default function MyDay() {
         {tasks[section].map((task) => (
           <li
             className={task.completed ? "completed" : ""}
-            onContextMenu={(e) => print(e)}
             key={task.id}
             id={`task-${task.id}`}
+            onContextMenu={(e) => handleContextMenu(e, task)}
           >
             <div className="task-item">
               <Checkbox
                 {...label}
                 style={{ color: "#1976D2" }}
                 checked={task.completed}
-                onChange={() => checkAsCompleted("myDay", task.id)}
+                onChange={() => checkAsCompleted(section, task.id)}
               />
               <p>
                 {task.title.match(/.{1,45}/g)?.map((chunk, index, arr) => (
@@ -71,13 +76,21 @@ export default function MyDay() {
                 ))}
               </p>
             </div>
-            <span style={{ display: "grid" }}>
+            <span style={{ display: "grid" }} onClick={() => taskImportant(section, task.id)}>
               <StarBorderPurple500OutlinedIcon
                 style={{ color: task.important ? "deeppink" : 'lightgray', cursor: "pointer" }}
               />
             </span>
           </li>
         ))}
+          <TaskContextMenu
+        anchor={menu}
+        task={selectedTask}
+        onClose={() => { setMenu(null); setSelectedTask(null); }}
+        onComplete={(t) => taskCompleted(section, t.id)}
+        onImportant={(t) => taskImportant(section, t.id)}
+        onDelete={(t) => removeTask(section, t.id)}
+      />
       </ul>
   );
 }

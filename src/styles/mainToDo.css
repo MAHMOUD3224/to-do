@@ -68,6 +68,7 @@
 }
 .user-options .ul-theme{
     z-index: 1;
+    top: 5px !important;
     overflow: hidden;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -146,7 +147,7 @@
 .task-list{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     overflow-y: auto;
     max-width: calc(100% - 20px);
     margin: 20px auto;
