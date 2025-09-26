@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Navigate, useParams } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 import MainToDo from './components/MainToDo';
 import Sidebar from './components/Sidebar';
@@ -6,9 +6,9 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import { Button } from '@mui/material';
 import MyDay from './components/MyDay';
 import Important from './components/Important';
-import Planned from './components/Planned';
-import AssignedToMe from './components/AssignedToMe';
-import FlaggedEmail from './components/FlaggedEmail';
+// import Planned from './components/Planned';
+// import AssignedToMe from './components/AssignedToMe';
+// import FlaggedEmail from './components/FlaggedEmail';
 import Tasks from './components/Tasks';
 import CustomList from './components/CustomeList';
 import { TodoProvider } from './contexts/TodoContext';

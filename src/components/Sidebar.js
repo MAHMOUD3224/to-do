@@ -1,9 +1,9 @@
 import '../styles/aside.css';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import StarBorderPurple500OutlinedIcon from '@mui/icons-material/StarBorderPurple500Outlined';
-import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
-import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
-import TourOutlinedIcon from '@mui/icons-material/TourOutlined';
+// import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
+// import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
+// import TourOutlinedIcon from '@mui/icons-material/TourOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';

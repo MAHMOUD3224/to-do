@@ -8,13 +8,13 @@ import {
   Grow,
 } from "@mui/material";
 import {
-  Folder,
+  // Folder,
   Delete,
   Star,
   CheckCircle,
-  Event,
-  WbSunny,
-  ArrowRight,
+  // Event,
+  // WbSunny,
+  // ArrowRight,
 } from "@mui/icons-material";
 
 export default function TaskContextMenu({
@@ -32,29 +32,29 @@ export default function TaskContextMenu({
   // ✅ تنظيف التايمرز لما الكومبوننت يتشال (مهم عشان مايحصلش memory leaks)
   useEffect(() => {
     return () => {
-      clearTimeout(openTimer.current);
+      // clearTimeout(openTimer.current);
       clearTimeout(closeTimer.current);
     };
   }, []);
 
-  // فتح متأخر (hover)
-  const handleSubOpenDelayed = (event) => {
-    // لا نسمح بغلق فوري
-    event.stopPropagation && event.stopPropagation();
-    clearTimeout(closeTimer.current);
-    openTimer.current = setTimeout(() => {
-      setSubmenuAnchor(event.currentTarget);
-    }, 150);
-  };
+  // // فتح متأخر (hover)
+  // const handleSubOpenDelayed = (event) => {
+  //   // لا نسمح بغلق فوري
+  //   event.stopPropagation && event.stopPropagation();
+  //   clearTimeout(closeTimer.current);
+  //   openTimer.current = setTimeout(() => {
+  //     setSubmenuAnchor(event.currentTarget);
+  //   }, 150);
+  // };
 
-  // فتح فوري (click / touch) — مهم أن نقوم ب preventDefault + stopPropagation
-  const handleSubOpenImmediate = (event) => {
-    event.preventDefault && event.preventDefault();
-    event.stopPropagation && event.stopPropagation();
-    clearTimeout(closeTimer.current);
-    clearTimeout(openTimer.current);
-    setSubmenuAnchor(event.currentTarget); // افتح فورًا
-  };
+  // // فتح فوري (click / touch) — مهم أن نقوم ب preventDefault + stopPropagation
+  // const handleSubOpenImmediate = (event) => {
+  //   event.preventDefault && event.preventDefault();
+  //   event.stopPropagation && event.stopPropagation();
+  //   clearTimeout(closeTimer.current);
+  //   clearTimeout(openTimer.current);
+  //   setSubmenuAnchor(event.currentTarget); // افتح فورًا
+  // };
 
   // إغلاق متأخر (عند الخروج بالماوس)
   const handleSubClose = () => {
@@ -171,7 +171,7 @@ export default function TaskContextMenu({
       </Menu>
 
       {/* Submenu (معلق بالكومينتس) */}
-      {/* <Menu
+      <Menu
         anchorEl={submenuAnchor}
         open={Boolean(submenuAnchor)}
         onClose={handleSubClose}
@@ -186,7 +186,7 @@ export default function TaskContextMenu({
       >
         <MenuItem onClick={() => handleCloseAll()}>Tasks</MenuItem>
         <MenuItem onClick={() => handleCloseAll()}>Front-End libraries</MenuItem>
-      </Menu> */}
+      </Menu>
     </>
   );
 }
