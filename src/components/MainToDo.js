@@ -230,7 +230,7 @@ export default function MainToDo(props) {
                         <MenuItem
                           data-color={"url('/images/tv-tower.jpg')"}
                           style={{
-                            backgroundImage: "url('/images/tv-tower.jpg')",
+                            backgroundImage: "url('/images/tv-tower.jpg')"
                           }}
                           onClick={mainSectionBackground}
                         ></MenuItem>

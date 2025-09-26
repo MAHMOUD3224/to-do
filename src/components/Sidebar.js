@@ -51,7 +51,7 @@ export default function Sidebar() {
           <Link to="/myDay">
             <LightModeOutlinedIcon style={{color:'lightgray'}} />
             <span>يومي</span>
-            {!tasks['myDay'] ? '' : <span className='list-length'>{tasks['myDay'].length}</span>}
+            {tasks['myDay'] && tasks['myDay'].length >= 1  ? <span className='list-length'>{tasks['myDay'].length}</span> : ''}
           </Link>
         </li>
         <li onClick={closeSidebar}>

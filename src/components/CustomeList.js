@@ -3,11 +3,20 @@ import { useTodo } from "../contexts/TodoContext";
 import { Checkbox } from "@mui/material";
 import StarBorderPurple500OutlinedIcon from "@mui/icons-material/StarBorderPurple500Outlined";
 import PageNotFound from "./pageNotFound";
+import { useState } from "react";
+import TaskContextMenu from "./RightClick";
 
 export default function CustomList() {
   let { sectionId } = useParams();
-  const { sections, tasks, taskCompleted, taskImportant} = useTodo();
-
+  const { sections, tasks, taskCompleted, removeTask, taskImportant} = useTodo();
+   const [menu, setMenu] = useState(null);
+    const [selectedTask, setSelectedTask] = useState(null);
+  
+    const handleContextMenu = (e, task) => {
+      e.preventDefault();
+      setSelectedTask(task);
+      setMenu({ mouseX: e.clientX, mouseY: e.clientY });
+    };
   // تحقق لو القسم مش موجود
   if (!sections[sectionId]) {
     return <PageNotFound />;
@@ -38,12 +47,6 @@ export default function CustomList() {
     );
   }
 
-  // دالة لطباعة (للتحقق فقط)
-  const print = (e) => {
-    e.preventDefault();
-    console.log("s");
-  };
-
   // دالة لتحديد المهمة كمكتملة
   const checkAsCompleted = (sectionName, taskId) => {
     console.log(sectionName, taskId);
@@ -60,7 +63,7 @@ export default function CustomList() {
         {tasks[sectionId].map((task) => (
           <li
             className={task.completed ? "completed" : ""}
-            onContextMenu={(e) => print(e)}
+            onContextMenu={(e) => handleContextMenu(e, task)}
             key={task.id}
             id={`task-${task.id}`}
           >
@@ -87,6 +90,14 @@ export default function CustomList() {
             </span>
           </li>
         ))}
+                        <TaskContextMenu
+                        anchor={menu}
+                        task={selectedTask}
+                        onClose={() => { setMenu(null); setSelectedTask(null); }}
+                        onComplete={(t) => taskCompleted(sectionId, t.id)}
+                        onImportant={(t) => taskImportant(sectionId, t.id)}
+                        onDelete={(t) => removeTask(sectionId, t.id)}
+                      />
       </ul>
   );
 }
