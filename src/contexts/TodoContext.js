@@ -199,7 +199,7 @@ const addTask = (section, task) => {
       [section]: prev[section]?.map(task =>
         task.id === taskId ? { ...task, completed: !task.completed } : task
       ) || []
-    }));
+    }));   
   };
 
   const taskImportant = (section, taskId) => {

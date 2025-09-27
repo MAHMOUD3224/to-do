@@ -167,7 +167,7 @@
     box-shadow: 0 1px 3px rgba(85, 85, 85, 0.800);
     padding: 6px 10px;
     width: 100%;
-    display: flex;
+    display: flex; 
     justify-content: space-between;
     align-items: center;
     color: white;
@@ -188,12 +188,11 @@
 }
 .task-list li.completed:hover{
     background: rgba(13, 62, 107, 0.800);
-
 }
 
 .task-list li:hover{
     background-color: rgba(51, 51, 51, 0.800);
-
+    padding-block: 10px;
 }
 .task-list li .task-item{
     display: flex;
