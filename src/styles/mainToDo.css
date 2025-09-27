@@ -154,6 +154,13 @@
     height: calc(100% - 120px);
     padding-inline: 10px;
 }
+@media (max-width: 768px) {
+.task-list{
+    max-width: 100%;
+    padding-inline: 0;
+}
+}
+
 .task-list li {
     list-style: none;
     background-color: rgba(35, 35, 35, 0.800);
@@ -208,7 +215,7 @@
 @media(max-width:500px){
 .task-list li p{
         font-size: 12px;
-        max-width: 180px;
+        max-width: 205px;
 }
 }
 .task-list li.completed p{

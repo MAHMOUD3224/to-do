@@ -65,7 +65,7 @@ export default function Tasks() {
                 onChange={() => checkAsCompleted(section, task.id)}
               />
               <p>
-                {task.title.match(/.{1,45}/g)?.map((chunk, index, arr) => (
+                {task.title.match(/.{1,30}/g)?.map((chunk, index, arr) => (
                   <span key={index}>
                     {chunk}
                     {index < arr.length - 1 && <br />}
