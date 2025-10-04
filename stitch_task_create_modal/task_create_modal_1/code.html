@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>New Task</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              display: ["Space Grotesk"],
+            },
+            borderRadius: { DEFAULT: "0.5rem", lg: "1rem", xl: "1.5rem", full: "9999px" },
+          },
+        },
+      };
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-100">
+<div class="flex h-screen flex-col">
+<header class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
+<button class="text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined"> close </span>
+</button>
+<h1 class="text-lg font-bold">New Task</h1>
+<button class="text-primary font-bold text-base">Done</button>
+</header>
+<main class="flex-1 overflow-y-auto p-6 space-y-6">
+<div class="space-y-2">
+<label class="sr-only" for="task-title">Task Title</label>
+<input class="w-full bg-gray-100 dark:bg-gray-800/50 border-none rounded-lg p-4 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary" id="task-title" placeholder="Task Title" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="sr-only" for="task-description">Description</label>
+<textarea class="w-full bg-gray-100 dark:bg-gray-800/50 border-none rounded-lg p-4 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary" id="task-description" placeholder="Description (optional)" rows="5"></textarea>
+</div>
+<div>
+<h2 class="text-base font-bold text-gray-900 dark:text-gray-100 mb-3">Attachments</h2>
+<div class="flex flex-col items-center justify-center space-y-4 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-700 bg-gray-100/50 dark:bg-gray-800/20 p-8">
+<div class="text-center">
+<p class="font-bold text-lg text-gray-900 dark:text-gray-100">Attach Files</p>
+<p class="text-sm text-gray-500 dark:text-gray-400">Drag and drop files here or click to browse</p>
+</div>
+<button class="bg-primary/20 dark:bg-primary/30 text-primary font-bold py-2 px-6 rounded-full">Browse Files</button>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

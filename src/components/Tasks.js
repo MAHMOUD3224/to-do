@@ -6,7 +6,8 @@ import TaskContextMenu from "./RightClick";
 
 export default function Tasks() {
   const { tasks, taskCompleted,removeTask, taskImportant } = useTodo();
-  let section = 'tasks';
+    let sectionTitle = 'tasks';
+   const section = tasks[sectionTitle] ; 
  const [menu, setMenu] = useState(null);
   const [selectedTask, setSelectedTask] = useState(null);
 
@@ -16,7 +17,7 @@ export default function Tasks() {
     setMenu({ mouseX: e.clientX, mouseY: e.clientY });
   };
   // إضافة Helmet لتحديد الـ title ديناميكيًا
-  if (!tasks[section]) {
+  if (!section) {
     return (
       <div
         style={{
@@ -50,7 +51,7 @@ export default function Tasks() {
 
   return (
       <ul className="task-list">
-        {tasks[section].map((task) => (
+        {section.map((task) => (
           <li
             className={task.completed ? "completed" : ""}
             key={task.id}
@@ -62,7 +63,7 @@ export default function Tasks() {
                 {...label}
                 style={{ color: "#1976D2" }}
                 checked={task.completed}
-                onChange={() => checkAsCompleted(section, task.id)}
+                onChange={() => checkAsCompleted(sectionTitle, task.id)}
               />
               <p>
                 {task.title.match(/.{1,30}/g)?.map((chunk, index, arr) => (
@@ -73,7 +74,7 @@ export default function Tasks() {
                 ))}
               </p>
             </div>
-            <span style={{ display: "grid" }} onClick={() => taskImportant(section, task.id)}>
+            <span style={{ display: "grid" }} onClick={() => taskImportant(sectionTitle, task.id)}>
               <StarBorderPurple500OutlinedIcon
                 style={{ color: task.important ? "deeppink" : 'lightgray', cursor: "pointer" }}
               />
@@ -84,9 +85,9 @@ export default function Tasks() {
                 anchor={menu}
                 task={selectedTask}
                 onClose={() => { setMenu(null); setSelectedTask(null); }}
-                onComplete={(t) => taskCompleted(section, t.id)}
-                onImportant={(t) => taskImportant(section, t.id)}
-                onDelete={(t) => removeTask(section, t.id)}
+                onComplete={(t) => taskCompleted(sectionTitle, t.id)}
+                onImportant={(t) => taskImportant(sectionTitle, t.id)}
+                onDelete={(t) => removeTask(sectionTitle, t.id)}
               />
       </ul>
   );

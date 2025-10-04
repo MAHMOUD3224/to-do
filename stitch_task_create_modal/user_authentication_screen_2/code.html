@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html class="dark" dir="ltr" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Taskify - Sign In</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#135bec",
+            "background-light": "#f6f6f8",
+            "background-dark": "#101622",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk"]
+          },
+          borderRadius: {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+  </style>
+<style>
+    body {
+      min-height: 100dvh;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
+<div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+<div class="hidden lg:flex items-center justify-center p-12 bg-slate-100 dark:bg-slate-900/50">
+<img alt="Dreamy artwork for task management" class="w-full h-full object-cover rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBROpXydCN_qXegsH_G1Fxq46cXm-L50Da5PXO2SXijSKCNPeR0IistthA3zHr-vvXC1SGWUjvEVbFK3rvO1MO42WLH3qpQktxMwnhCHOTPVZcQWooTFh41u816yGc1IyAP45WZlAc2OAFDk8tIXrDRorb8VCEbh1iR9KV4LeTv5xEjNYTTE1Hm_szIaCKLIwt4o1ZbtWG76ukwgEN4LgjzDO4vbCWgltI49fKNG3jV4us_EMAynw_ZSHVCddGKUc9A4eJaT2sL_wA"/>
+</div>
+<div class="flex flex-col justify-center p-6 sm:p-12">
+<div class="w-full max-w-md mx-auto rtl:text-right">
+<header class="mb-8">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Taskify</h2>
+</header>
+<main>
+<h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-3">Welcome Back</h1>
+<p class="text-slate-600 dark:text-slate-400 mb-8">Manage your tasks efficiently and stay organized.</p>
+<div class="space-y-4">
+<button class="w-full flex items-center justify-center gap-3 bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-300 transform hover:scale-105 text-slate-700 dark:text-white font-semibold py-3 px-4 rounded-lg">
+<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21.35 11.1H12.18V12.83H18.68C18.36 14.66 17.06 16.51 15.34 17.64V19.82H17.9C19.83 18.03 21.07 15.39 21.07 12.31C21.07 11.87 21.07 11.48 21.35 11.1Z" fill="#4285F4"></path>
+<path d="M12.18 22C14.79 22 17.02 21.19 18.68 19.82L15.34 17.64C14.53 18.23 13.45 18.6 12.18 18.6C9.97 18.6 8.08 17.12 7.37 15.1H4.59V17.38C6.08 20.19 8.91 22 12.18 22Z" fill="#34A853"></path>
+<path d="M7.37 15.1C7.18 14.54 7.09 13.92 7.09 13.3C7.09 12.68 7.18 12.06 7.37 11.5V9.22H4.59C3.96 10.45 3.64 11.83 3.64 13.3C3.64 14.77 3.96 16.15 4.59 17.38L7.37 15.1Z" fill="#FBBC05"></path>
+<path d="M12.18 8.00001C13.52 8.00001 14.59 8.52001 15.11 9.01001L17.98 6.18001C16.32 4.74001 14.1 3.60001 11.51 3.60001C8.24 3.60001 5.41 5.41001 3.92 8.22001L6.7 10.5C7.41 8.48001 9.3 7.00001 11.51 7.00001" fill="#EA4335"></path>
+</svg>
+              Continue with Google
+            </button>
+<button class="w-full flex items-center justify-center gap-3 bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-300 transform hover:scale-105 text-slate-700 dark:text-white font-semibold py-3 px-4 rounded-lg">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 23 23">
+<path d="M10.5,10.5h10.5v10.5h-10.5v-10.5Zm0-10.5h10.5v10.5h-10.5V0ZM0,21h10.5V10.5H0V21Zm0-10.5h10.5V0H0v10.5Z" fill="#F25022"></path>
+</svg>
+              Continue with Microsoft
+            </button>
+<button class="w-full flex items-center justify-center gap-3 bg-white dark:bg-black border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-300 transform hover:scale-105 text-slate-700 dark:text-white font-semibold py-3 px-4 rounded-lg">
+<svg class="w-5 h-5 dark:invert" fill="currentColor" viewBox="0 0 24 24">
+<path d="M17.29 16.29c-.06.03-.11.06-.18.09a7.61 7.61 0 01-2.91.68c-.6 0-1.14-.12-1.62-.35-.51-.23-.96-.54-1.32-.91a3.53 3.53 0 01-.6-3.87c.27-.6.69-1.11 1.23-1.5.51-.36 1.11-.54 1.77-.54.45 0 .93.11 1.44.33.48.21.84.42 1.08.63l-.03-.03c.12-.15.3-1.02-1.35-1.02-.63 0-1.2.21-1.68.6-.51.42-.81.99-.9 1.68l-2.43-.36c.15-1.11.69-2.07 1.59-2.88.9-.84 2.07-1.26 3.51-1.26 1.05 0 2.01.27 2.85.81.84.51 1.44 1.29 1.8 2.31.06.18.09.36.12.57.03.21.03.42.03.63v.15c0 .09 0 .15-.03.21-.06 2.04-1.02 3.6-2.88 4.65zm-2.61-2.22c.45-.33.72-.75.81-1.26l-.03.03c-.27-.18-.6-.33-1-.45-.48-.12-.9-.18-1.26-.18-.45 0-.84.15-1.17.42-.3.27-.48.6-.51.99.03.39.18.72.48.96.27.24.6.36.99.36.42 0 .81-.12 1.17-.36z" fill="#000000"></path>
+</svg>
+              Continue with Apple
+            </button>
+</div>
+<div class="relative flex py-5 items-center">
+<div class="flex-grow border-t border-slate-200 dark:border-slate-700"></div>
+<span class="flex-shrink mx-4 text-slate-400 dark:text-slate-500 text-sm">OR</span>
+<div class="flex-grow border-t border-slate-200 dark:border-slate-700"></div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 transition-colors duration-300 text-white font-bold py-3 px-4 rounded-lg">
+            Continue with Email
+          </button>
+</main>
+<footer class="mt-8 text-center">
+<p class="text-sm text-slate-500 dark:text-slate-400">By continuing, you agree to our <a class="text-primary hover:underline" href="#">Terms of Service</a> and <a class="text-primary hover:underline" href="#">Privacy Policy</a>.</p>
+</footer>
+</div>
+</div>
+</div>
+
+</body></html>

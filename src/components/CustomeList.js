@@ -7,11 +7,12 @@ import { useState } from "react";
 import TaskContextMenu from "./RightClick";
 
 export default function CustomList() {
-  let { sectionId } = useParams();
   const { sections, tasks, taskCompleted, removeTask, taskImportant} = useTodo();
-   const [menu, setMenu] = useState(null);
+  const { sectionId } = useParams();
+  const section = tasks[sectionId] ; 
+  const [menu, setMenu] = useState(null);
     const [selectedTask, setSelectedTask] = useState(null);
-  
+
     const handleContextMenu = (e, task) => {
       e.preventDefault();
       setSelectedTask(task);
@@ -23,7 +24,7 @@ export default function CustomList() {
   }
 
   // لو مفيش مهام بعد
-  if (!tasks[sectionId]) {
+  if (!section || section.length === 0) {
     return (
       <div
         style={{
@@ -60,7 +61,7 @@ export default function CustomList() {
 
   return (
       <ul className="task-list">
-        {tasks[sectionId].map((task) => (
+        {section.map((task) => (
           <li
             className={task.completed ? "completed" : ""}
             onContextMenu={(e) => handleContextMenu(e, task)}

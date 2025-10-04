@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html class="dark" dir="ltr" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch Design</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#135bec",
+            "background-light": "#f6f6f8",
+            "background-dark": "#101622",
+            "glass-light": "rgba(255, 255, 255, 0.5)",
+            "glass-dark": "rgba(31, 38, 51, 0.5)",
+          },
+          fontFamily: {
+            display: ["Space Grotesk", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+            lg: "1rem",
+            xl: "1.5rem",
+            full: "9999px",
+          },
+          boxShadow: {
+            'dreamy': '0 10px 30px -15px rgba(19, 91, 236, 0.3), 0 4px 6px -2px rgba(19, 91, 236, 0.05)',
+          },
+          backgroundImage: {
+            'gradient-radial': 'radial-gradient(ellipse at top left, var(--tw-gradient-stops))',
+            'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      font-family: "Space Grotesk", sans-serif;
+      min-width: 1200px;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    }
+    .sidebar-gradient {
+      background-image: radial-gradient(circle at top left, theme('colors.primary / 0.1'), transparent 40%);
+    }
+    .main-gradient {
+      background-image: radial-gradient(circle at top, theme('colors.primary / 0.05'), transparent 30%);
+    }
+    .details-gradient {
+      background-image: radial-gradient(circle at top right, theme('colors.primary / 0.1'), transparent 40%);
+    }
+    .glassmorphism {
+      background-color: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+    }
+    html.dark .glassmorphism {
+      --glass-bg: theme('colors.glass-dark');
+      --glass-border: theme('colors.white / 0.1');
+    }
+    html:not(.dark) .glassmorphism {
+      --glass-bg: theme('colors.glass-light');
+      --glass-border: theme('colors.black / 0.05');
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200 overflow-hidden">
+<div class="flex h-screen w-full">
+<aside class="w-[280px] flex-shrink-0 bg-background-light dark:bg-background-dark border-r border-white/10 dark:border-black/10 flex flex-col p-4 sidebar-gradient">
+<div class="flex items-center gap-2 p-2 mb-8">
+<div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl"> task_alt </span>
+</div>
+<h1 class="text-xl font-bold text-gray-900 dark:text-white">TaskFlow</h1>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 transition-colors" href="#">
+<span class="material-symbols-outlined"> light_mode </span>
+<span class="font-medium">My Day</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 transition-colors" href="#">
+<span class="material-symbols-outlined"> star </span>
+<span class="font-medium">Important</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"> list_alt </span>
+<span class="font-medium">Tasks</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 transition-colors" href="#">
+<span class="material-symbols-outlined"> person </span>
+<span class="font-medium">Assigned to me</span>
+</a>
+</nav>
+<div class="mt-auto">
+<button class="flex w-full items-center justify-center gap-2 rounded-lg bg-primary text-white h-12 hover:bg-primary/90 transition-colors shadow-dreamy">
+<span class="material-symbols-outlined"> add </span>
+<span class="font-medium">New Task</span>
+</button>
+</div>
+</aside>
+<main class="flex-1 flex flex-col main-gradient">
+<header class="flex items-center justify-between p-6 flex-shrink-0">
+<div>
+<h1 class="text-2xl font-bold text-gray-900 dark:text-white">Tasks</h1>
+<p class="text-gray-500 dark:text-gray-400">All your pending and completed tasks.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"> search </span>
+<input class="w-64 rounded-lg border-2 border-transparent bg-background-light/50 dark:bg-background-dark/50 focus:border-primary focus:ring-primary h-12 pl-10 pr-4 text-base text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400" placeholder="Search tasks..." type="text"/>
+</div>
+<div class="flex items-center gap-2 rounded-lg p-1 glassmorphism">
+<button class="h-10 w-10 flex items-center justify-center rounded-md text-gray-500 dark:text-gray-400 hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined"> list </span>
+</button>
+<button class="h-10 w-10 flex items-center justify-center rounded-md bg-primary/10 text-primary dark:bg-primary/20">
+<span class="material-symbols-outlined"> grid_view </span>
+</button>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto px-6 pb-6">
+<div class="grid grid-cols-1 @[600px]:grid-cols-2 @[900px]:grid-cols-3 gap-4">
+<div class="flex flex-col gap-4 rounded-xl p-4 glassmorphism group hover:shadow-dreamy transition-shadow duration-300">
+<div class="flex items-start gap-3">
+<label class="flex-shrink-0 mt-1">
+<input class="form-checkbox h-5 w-5 rounded-md border-gray-300 dark:border-gray-600 bg-transparent text-primary focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+</label>
+<div class="flex-1">
+<p class="font-medium text-gray-900 dark:text-white">Grocery shopping</p>
+<p class="text-sm text-gray-500 dark:text-gray-400">No due date</p>
+</div>
+<button class="text-gray-400 dark:text-gray-500 hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-xl"> star </span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl p-4 glassmorphism group hover:shadow-dreamy transition-shadow duration-300 ring-2 ring-primary">
+<div class="flex items-start gap-3">
+<label class="flex-shrink-0 mt-1">
+<input class="form-checkbox h-5 w-5 rounded-md border-gray-300 dark:border-gray-600 bg-transparent text-primary focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+</label>
+<div class="flex-1">
+<p class="font-medium text-gray-900 dark:text-white">Book doctor's appointment</p>
+<p class="text-sm text-primary">Due tomorrow</p>
+</div>
+<button class="text-gray-400 dark:text-gray-500 hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-xl"> star </span>
+</button>
+</div>
+<div class="flex items-center gap-2 text-xs">
+<div class="flex items-center gap-1 rounded-full bg-red-500/10 px-2 py-1 text-red-500">
+<span class="material-symbols-outlined text-sm"> priority_high </span> High
+              </div>
+<div class="flex items-center gap-1 rounded-full bg-blue-500/10 px-2 py-1 text-blue-500">
+<span class="material-symbols-outlined text-sm"> label </span> Personal
+              </div>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl p-4 glassmorphism group hover:shadow-dreamy transition-shadow duration-300 opacity-60">
+<div class="flex items-start gap-3">
+<label class="flex-shrink-0 mt-1">
+<input checked="" class="form-checkbox h-5 w-5 rounded-md border-gray-300 dark:border-gray-600 bg-transparent text-primary focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+</label>
+<div class="flex-1">
+<p class="font-medium text-gray-500 dark:text-gray-400 line-through">Pay bills</p>
+<p class="text-sm text-gray-500 dark:text-gray-500 line-through">Due in 2 days</p>
+</div>
+<button class="text-primary hover:text-primary/80 transition-colors opacity-100">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;"> star </span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl p-4 glassmorphism group hover:shadow-dreamy transition-shadow duration-300">
+<div class="flex items-start gap-3">
+<label class="flex-shrink-0 mt-1">
+<input class="form-checkbox h-5 w-5 rounded-md border-gray-300 dark:border-gray-600 bg-transparent text-primary focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+</label>
+<div class="flex-1">
+<p class="font-medium text-gray-900 dark:text-white">Plan weekend trip</p>
+<p class="text-sm text-gray-500 dark:text-gray-400">Due in 3 days</p>
+</div>
+<button class="text-gray-400 dark:text-gray-500 hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-xl"> star </span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl p-4 glassmorphism group hover:shadow-dreamy transition-shadow duration-300">
+<div class="flex items-start gap-3">
+<label class="flex-shrink-0 mt-1">
+<input class="form-checkbox h-5 w-5 rounded-md border-gray-300 dark:border-gray-600 bg-transparent text-primary focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+</label>
+<div class="flex-1">
+<p class="font-medium text-gray-900 dark:text-white">Read a book</p>
+<p class="text-sm text-gray-500 dark:text-gray-400">Due in 4 days</p>
+</div>
+<button class="text-gray-400 dark:text-gray-500 hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-xl"> star </span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<aside class="w-[360px] flex-shrink-0 bg-background-light dark:bg-background-dark border-l border-white/10 dark:border-black/10 flex flex-col p-6 details-gradient">
+<div class="flex-1 overflow-y-auto">
+<div class="flex items-start gap-4 mb-6">
+<label class="flex-shrink-0 mt-1">
+<input class="form-checkbox h-6 w-6 rounded-md border-gray-300 dark:border-gray-600 bg-transparent text-primary focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+</label>
+<div class="flex-1">
+<h2 class="text-xl font-bold text-gray-900 dark:text-white">Book doctor's appointment</h2>
+</div>
+<button class="text-primary hover:text-primary/80 transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"> star </span>
+</button>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500"> calendar_today </span>
+<div class="flex-1">
+<p class="font-medium text-gray-900 dark:text-white">Due Date</p>
+<p class="text-sm text-primary">Tomorrow</p>
+</div>
+<button class="text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined"> edit </span>
+</button>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500"> notes </span>
+<div class="flex-1">
+<p class="font-medium text-gray-900 dark:text-white">Notes</p>
+<p class="text-sm text-gray-500 dark:text-gray-400">Call Dr. Smith's office to schedule check-up.</p>
+</div>
+<button class="text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined"> edit </span>
+</button>
+</div>
+<div>
+<p class="font-medium text-gray-900 dark:text-white mb-3">Attachments</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="relative group aspect-square rounded-lg overflow-hidden cursor-pointer">
+<img alt="Referral letter" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1DkCesECbfhY8DhKfXgEZNG3yvMFVv4IsThW-PMa_Za8BjfbED6MnlbjLdurjWqvGFJbLNa1xhZnQ7YCjwyQktDFh7uOXrr_TbEzZWNbna3n_ch4sawebZ-nrWbivad2RhqXWYq5bOYbUWQ104Vln9ggU0wnB-sfduOAgsyLH6kOvz8SD0KNQeJfDU_37Y2E2MCQZjhggE0kwIAfIwMSO4DYIIT6auRGzFqZ8beA9K3DRpn1hbYVM8XdvuPgk__Cmg2cfhwz32Uk"/>
+<div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-4xl"> visibility </span>
+</div>
+</div>
+<div class="relative group aspect-square rounded-lg overflow-hidden cursor-pointer">
+<div class="bg-primary/10 h-full w-full flex flex-col items-center justify-center text-primary gap-2">
+<span class="material-symbols-outlined"> attach_file </span>
+<span class="text-sm font-medium">Add file</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-shrink-0 pt-6 mt-auto border-t border-white/10 dark:border-black/10">
+<button class="flex items-center justify-center w-full gap-2 text-red-500 hover:bg-red-500/10 rounded-lg h-11 transition-colors">
+<span class="material-symbols-outlined"> delete </span>
+<span class="font-medium">Delete Task</span>
+</button>
+</div>
+</aside>
+</div>
+
+</body></html>

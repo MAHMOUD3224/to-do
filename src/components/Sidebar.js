@@ -24,8 +24,9 @@ export default function Sidebar() {
   }
   }
   let custom_Li = custom.map((newLi) => {
-      let tasksFound = tasks[newLi.section] === undefined;
-      let tasksLength = tasksFound ? '' : tasks[newLi.section].length ;
+      const theSection = tasks[newLi.section];
+      let tasksFound = theSection === undefined || theSection.length ===0 ;
+      let tasksLength = tasksFound ? '' : theSection.length ;
     return(
             <li key={newLi.section} onClick={closeSidebar}>
             <Link to={'/custom/' + newLi.section} >
@@ -48,7 +49,7 @@ export default function Sidebar() {
       </div>
       <ul className="user-actions">
         <li onClick={closeSidebar}>  
-          <Link to="/myDay">
+          <Link to="/">
             <LightModeOutlinedIcon style={{color:'lightgray'}} />
             <span>يومي</span>
             {tasks['myDay'] && tasks['myDay'].length >= 1  ? <span className='list-length'>{tasks['myDay'].length}</span> : ''}

@@ -32,8 +32,7 @@ function App() {
           <Sidebar />
         <Routes>
           <Route path="*" element={<MainToDo><PageNotFound /></MainToDo>} />
-          <Route path="/" element={<Navigate to="/myDay" />} />
-          <Route path="/myDay" element={<MainToDo sectionName={'myDay'}><MyDay/></MainToDo>} />
+          <Route path="/" element={<MainToDo sectionName={'myDay'}><MyDay/></MainToDo>} />
           <Route path="/important" element={<MainToDo sectionName={'important'}><Important /></MainToDo>} />
           <Route path="/tasks" element={<MainToDo sectionName={'tasks'}><Tasks/></MainToDo>} />
           <Route path='/custom/:sectionId' element={<MainToDo><CustomList /></MainToDo>} />

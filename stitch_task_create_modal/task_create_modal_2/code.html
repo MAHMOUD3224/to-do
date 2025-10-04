@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html class="dark" dir="ltr" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>New Task - Desktop</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#135bec",
+            "background-light": "#f6f6f8",
+            "background-dark": "#101622",
+            "surface-light": "#ffffff",
+            "surface-dark": "#1c2431",
+          },
+          fontFamily: {
+            display: ["Space Grotesk"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+            lg: "1rem",
+            xl: "1.5rem",
+            full: "9999px"
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      min-height: 100dvh;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-100 flex items-center justify-center p-4">
+<div class="w-full max-w-6xl mx-auto bg-surface-light dark:bg-surface-dark rounded-xl shadow-2xl overflow-hidden">
+<div class="grid grid-cols-1 md:grid-cols-2">
+<div class="p-8 md:p-12 flex flex-col">
+<div class="flex justify-between items-center mb-8">
+<h1 class="text-3xl font-bold">New Task</h1>
+<button class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full p-2">
+<span class="material-symbols-outlined"> close </span>
+</button>
+</div>
+<div class="space-y-6 flex-grow">
+<div class="space-y-2">
+<label class="font-medium text-gray-700 dark:text-gray-300" for="task-title">Task Title</label>
+<input class="w-full bg-gray-100 dark:bg-gray-800/50 border-none rounded-lg p-4 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary" id="task-title" placeholder="e.g., Design the new dashboard" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-medium text-gray-700 dark:text-gray-300" for="task-description">Description</label>
+<textarea class="w-full bg-gray-100 dark:bg-gray-800/50 border-none rounded-lg p-4 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary" id="task-description" placeholder="Add more details about the task..." rows="5"></textarea>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-medium text-gray-700 dark:text-gray-300" for="due-date">Due Date</label>
+<input class="w-full bg-gray-100 dark:bg-gray-800/50 border-none rounded-lg p-4 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary" id="due-date" type="date"/>
+</div>
+<div class="space-y-2">
+<label class="font-medium text-gray-700 dark:text-gray-300" for="tags">Tags</label>
+<input class="w-full bg-gray-100 dark:bg-gray-800/50 border-none rounded-lg p-4 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary" id="tags" placeholder="e.g., UI, Design, High Priority" type="text"/>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-end">
+<button class="bg-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-primary/90 transition-colors">Create Task</button>
+</div>
+</div>
+<div class="bg-gray-50 dark:bg-background-dark p-8 md:p-12 flex flex-col justify-center">
+<div class="flex flex-col items-center justify-center space-y-6 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-700 bg-gray-100/50 dark:bg-gray-800/20 p-12 h-full">
+<div class="text-center">
+<span class="material-symbols-outlined text-6xl text-gray-400 dark:text-gray-500"> cloud_upload </span>
+<p class="font-bold text-xl text-gray-900 dark:text-gray-100 mt-4">Attach Files</p>
+<p class="text-sm text-gray-500 dark:text-gray-400">Drag and drop images or PDFs here</p>
+</div>
+<div class="text-center">
+<p class="text-sm text-gray-500 dark:text-gray-400">or</p>
+<button class="mt-2 text-primary font-bold hover:underline">Browse Files</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

@@ -6,8 +6,9 @@ import TaskContextMenu from "./RightClick";
 
 export default function MyDay() {
   const { tasks, taskCompleted,removeTask, taskImportant } = useTodo();
-  let section = 'myDay';
- const [menu, setMenu] = useState(null);
+  let sectionTitle = 'myDay';
+  const section = tasks[sectionTitle] ; 
+  const [menu, setMenu] = useState(null);
   const [selectedTask, setSelectedTask] = useState(null);
 
   const handleContextMenu = (e, task) => {
@@ -15,9 +16,8 @@ export default function MyDay() {
     setSelectedTask(task);
     setMenu({ mouseX: e.clientX, mouseY: e.clientY });
   };
-  // إضافة Helmet لتحديد الـ title ديناميكيًا
-  if (!tasks[section]) {
-    return (
+  const NoTasksYet = () => {
+        return (
       <div
         style={{
           position: "absolute",
@@ -42,6 +42,10 @@ export default function MyDay() {
       </div>
     );
   }
+  // إضافة Helmet لتحديد الـ title ديناميكيًا
+  if (!section || section.length === 0) {
+    return <NoTasksYet /> ;
+  }
 
 
   const checkAsCompleted = (sectionName, taskId) => {
@@ -53,7 +57,8 @@ export default function MyDay() {
 
   return (
       <ul className="task-list">
-        {tasks[section].map((task) => (
+        
+        {section.map((task) => (
           <li
             className={task.completed ? "completed" : ""}
             key={task.id}
@@ -65,7 +70,7 @@ export default function MyDay() {
                 {...label}
                 style={{ color: "#1976D2" }}
                 checked={task.completed}
-                onChange={() => checkAsCompleted(section, task.id)}
+                onChange={() => checkAsCompleted(sectionTitle, task.id)}
               />
               <p>
                 {task.title.match(/.{1,30}/g)?.map((chunk, index, arr) => (
@@ -76,7 +81,7 @@ export default function MyDay() {
                 ))}
               </p>
             </div>
-            <span style={{ display: "grid" }} onClick={() => taskImportant(section, task.id)}>
+            <span style={{ display: "grid" }} onClick={() => taskImportant(sectionTitle, task.id)}>
               <StarBorderPurple500OutlinedIcon
                 style={{ color: task.important ? "deeppink" : 'lightgray', cursor: "pointer" }}
               />
@@ -87,9 +92,9 @@ export default function MyDay() {
         anchor={menu}
         task={selectedTask}
         onClose={() => { setMenu(null); setSelectedTask(null); }}
-        onComplete={(t) => taskCompleted(section, t.id)}
-        onImportant={(t) => taskImportant(section, t.id)}
-        onDelete={(t) => removeTask(section, t.id)}
+        onComplete={(t) => taskCompleted(sectionTitle, t.id)}
+        onImportant={(t) => taskImportant(sectionTitle, t.id)}
+        onDelete={(t) => removeTask(sectionTitle, t.id)}
       />
       </ul>
   );

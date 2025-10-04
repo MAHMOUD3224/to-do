@@ -76,7 +76,7 @@ export default function Important() {
                   </span>
                 ))}
               </p>
-            </div>
+            </div>  
             <span style={{ display: "grid" }} onClick={() => taskImportant(task.section, task.id)}>
               <StarIcon
                 style={{ color: task.important ? "deeppink" : 'lightgray', cursor: "pointer" }}

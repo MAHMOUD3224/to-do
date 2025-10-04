@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="dark" dir="ltr" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#135bec",
+            "background-light": "#f6f6f8",
+            "background-dark": "#101622",
+            "surface-light": "#ffffff",
+            "surface-dark": "#19202e",
+            "muted-light": "#6b7280",
+            "muted-dark": "#9ca3af",
+          },
+          fontFamily: {
+            display: ["Space Grotesk", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+            lg: "1rem",
+            xl: "1.5rem",
+            full: "9999px",
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      font-family: "Space Grotesk", sans-serif;
+    }
+    .dark .bg-surface-dark\/50 {
+      background-color: rgba(25, 32, 46, 0.5);
+    }
+  </style>
+<title>Task Details Panel</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="flex h-screen">
+<div class="flex-1 p-8">
+<h1 class="text-4xl font-bold text-gray-900 dark:text-white">Your Tasks</h1>
+<p class="mt-2 text-gray-600 dark:text-gray-400">
+        Here's what you have on your plate.
+      </p>
+<div class="mt-8 rounded-xl border border-gray-200 bg-white/50 p-8 text-center dark:border-gray-700/50 dark:bg-surface-dark/50">
+<p class="text-lg text-gray-500 dark:text-gray-400">
+          Main application content goes here.
+        </p>
+</div>
+</div>
+<aside class="w-[480px] flex-shrink-0 border-l border-gray-200 bg-surface-light dark:border-gray-800 dark:bg-surface-dark rtl:border-l-0 rtl:border-r">
+<div class="flex h-full flex-col">
+<div class="flex-grow overflow-y-auto p-8">
+<div class="space-y-8">
+<div>
+<input class="w-full border-none bg-transparent p-0 text-3xl font-bold text-gray-900 placeholder-gray-500 focus:ring-0 dark:text-white dark:placeholder-gray-400" type="text" value="Finalize Q3 Report"/>
+</div>
+<div>
+<textarea class="w-full resize-none border-none bg-transparent p-0 text-base text-gray-600 placeholder-gray-400 focus:ring-0 dark:text-gray-400 dark:placeholder-gray-500" rows="3">Review data, compile key findings, and create visualizations for the quarterly presentation.</textarea>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="flex items-center gap-2 rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-800/50 dark:text-gray-300 dark:hover:bg-gray-700/60">
+<svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+<polyline points="22 4 12 14.01 9 11.01"></polyline>
+</svg>
+<span>Mark Complete</span>
+</button>
+<button class="flex items-center gap-2 rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-800/50 dark:text-gray-300 dark:hover:bg-gray-700/60">
+<svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+<path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+</svg>
+<span>Set Reminder</span>
+</button>
+</div>
+<div>
+<h3 class="mb-4 text-base font-semibold text-gray-800 dark:text-gray-200">
+                Subtasks
+              </h3>
+<div class="space-y-3">
+<div class="flex items-center gap-3 rounded-lg bg-gray-100/50 p-3 dark:bg-gray-800/30">
+<input checked="" class="form-checkbox h-5 w-5 flex-shrink-0 cursor-pointer rounded border-gray-300 bg-transparent text-primary focus:ring-primary focus:ring-offset-surface-light dark:border-gray-600 dark:focus:ring-offset-surface-dark" type="checkbox"/>
+<span class="flex-grow text-sm text-gray-800 dark:text-gray-300">Research market trends</span>
+</div>
+<div class="flex items-center gap-3 rounded-lg bg-gray-100/50 p-3 dark:bg-gray-800/30">
+<input class="form-checkbox h-5 w-5 flex-shrink-0 cursor-pointer rounded border-gray-300 bg-transparent text-primary focus:ring-primary focus:ring-offset-surface-light dark:border-gray-600 dark:focus:ring-offset-surface-dark" type="checkbox"/>
+<span class="flex-grow text-sm text-gray-800 dark:text-gray-300">Define project scope</span>
+</div>
+<div class="flex items-center gap-3 rounded-lg bg-gray-100/50 p-3 dark:bg-gray-800/30">
+<input class="form-checkbox h-5 w-5 flex-shrink-0 cursor-pointer rounded border-gray-300 bg-transparent text-primary focus:ring-primary focus:ring-offset-surface-light dark:border-gray-600 dark:focus:ring-offset-surface-dark" type="checkbox"/>
+<span class="flex-grow text-sm text-gray-800 dark:text-gray-300">Create budget plan</span>
+</div>
+<button class="w-full rounded-lg py-2 text-left text-sm text-primary hover:bg-primary/10">
+                  + Add subtask
+                </button>
+</div>
+</div>
+<div>
+<h3 class="mb-4 text-base font-semibold text-gray-800 dark:text-gray-200">
+                Attachments
+              </h3>
+<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+<div class="group relative aspect-square w-full">
+<div class="h-full w-full rounded-lg bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDEZYZlJNNlYHN3kVKTE1CpWmi3vDqmz2qC6vIkXpP823H5GNaQoiuRhG4i0JOltNDAcUF3ydCdufi31SabuGmjYAEP6YXMeJIQqZB7e7yMCHZyTZlNDzBxWqWnEdlQiW1UpeqPEf5CCknGJafmhwyBCCc45Dv19kgIIBhn2Rs7wWb9vPEjnjpJUsp7m-RU2jQBUnPdyS9FZZr_BziX2-6eYwxHW_fwwcPehAuSOYATf-MnhVeKCGHqPRNywhE7udMjOhvK2ahPb-g")'></div>
+<div class="absolute inset-0 rounded-lg bg-black/40 opacity-0 transition-opacity group-hover:opacity-100"></div>
+</div>
+<div class="group relative aspect-square w-full">
+<div class="h-full w-full rounded-lg bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBR60kp7Xfq5kPFT8GAwekvnLLAjfyRz1Et-VqaKr_bCRMsv9NYZkTV2nElyGDYiOGXt-tHuri5YctJ1SgNnz0KBBVq0WIiiEINVk4GRd6qbfs17yJq0bCa3JMyJU5vRALRggfrprrbR-8lVc2agR7GmjdAu0Ry3TaerURrTnOl8RWFHnP9ZLvcrY5W-ZHZSswkPL-3npgtI4xB302ZSss3Dyf9X_7agr8gYbZDVvr44lk4c9xa-9XijbJ80dOSpQ8SyCE5dJlwCsg")'></div>
+<div class="absolute inset-0 rounded-lg bg-black/40 opacity-0 transition-opacity group-hover:opacity-100"></div>
+</div>
+<button class="flex aspect-square w-full flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 text-gray-400 hover:border-primary hover:text-primary dark:border-gray-700">
+<svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 5v14"></path>
+<path d="M5 12h14"></path>
+</svg>
+<span class="mt-1 text-xs">Add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-shrink-0 border-t border-gray-200 bg-surface-light/80 p-4 backdrop-blur-sm dark:border-gray-800 dark:bg-surface-dark/80">
+<div class="flex justify-end gap-4 rtl:flex-row-reverse">
+<button class="rounded-lg bg-gray-200 px-6 py-2.5 text-sm font-bold text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+              Cancel
+            </button>
+<button class="rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-white hover:bg-primary/90">
+              Save Changes
+            </button>
+</div>
+</div>
+</div>
+</aside>
+</div>
+
+</body></html>
